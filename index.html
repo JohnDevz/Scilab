@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu de Matrizes</title>
+<style>
+    body {
+        background-color: #ffd6e7;
+        color: #000000;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: #ffffffaa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+    }
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.4;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Função de Operações com Matrizes</h1>
+    <pre>
+      feito por: <span style="font-size: 20px; color: black;">John</span>
+      
+      
+function matriz_menu()
+clc;
+clear;// ===== Entrada da Matriz A ===== nA = input("Número de linhas da matriz A: "); mA = input("Número de colunas da matriz A: "); A = zeros(nA, mA); disp("Digite os elementos da matriz A linha por linha:"); for i = 1:nA for j = 1:mA A(i,j) = input("A(" + string(i) + "," + string(j) + ") = "); end end
+
+// ===== Entrada da Matriz B ===== nB = input("Número de linhas da matriz B: "); mB = input("Número de colunas da matriz B: "); B = zeros(nB, mB); disp("Digite os elementos da matriz B linha por linha:"); for i = 1:nB for j = 1:mB B(i,j) = input("B(" + string(i) + "," + string(j) + ") = "); end end
+
+// ===== MENU INTERATIVO ===== op = 0; while op <> 9 disp("==================================="); disp("          MENU DE OPERAÇÕES        "); disp("==================================="); disp("1 - A + B"); disp("2 - A - B"); disp("3 - A * B"); disp("4 - A / B"); disp("5 - A \ B"); disp("6 - Transpostas de A e B"); disp("7 - Determinante, traço e inversa"); disp("8 - Mostrar matrizes"); disp("9 - Sair"); disp("===================================");
+
+op = input("Escolha uma opção: ");
+disp(" ");
+
+select op
+
+case 1 then
+    if (nA == nB) & (mA == mB) then
+        disp("A + B =");
+        disp(A + B);
+    else
+        disp("Não é possível somar: dimensões diferentes.");
+    end
+
+case 2 then
+    if (nA == nB) & (mA == mB) then
+        disp("A - B =");
+        disp(A - B);
+    else
+        disp("Não é possível subtrair: dimensões diferentes.");
+    end
+
+case 3 then
+    if mA == nB then
+        disp("A * B =");
+        disp(A * B);
+    else
+        disp("Não é possível multiplicar: número de colunas de A ≠ número de linhas de B.");
+    end
+
+case 4 then
+    if (nB == mB) & (det(B) <> 0) then
+        disp("A / B = A * inv(B) =");
+        disp(A / B);
+    else
+        disp("Não é possível calcular A / B: B não é quadrada ou não é invertível.");
+    end
+
+case 5 then
+    if (nA == mA) & (det(A) <> 0) then
+        disp("A \\ B = inv(A) * B =");
+        disp(A \\ B);
+    else
+        disp("Não é possível calcular A \\ B: A não é quadrada ou não é invertível.");
+    end
+
+case 6 then
+    disp("Transposta de A (A''):");
+    disp(A');
+    disp("Transposta de B (B''):");
+    disp(B');
+
+case 7 then
+    disp("===== MATRIZ A =====");
+    if nA == mA then
+        disp("Determinante de A: " + string(det(A)));
+        disp("Traço de A: " + string(trace(A)));
+        if det(A) <> 0 then
+            disp("Inversa de A:");
+            disp(inv(A));
+        else
+            disp("A matriz A não é invertível (det = 0).");
+        end
+    else
+        disp("A não é quadrada → sem determinante, inversa ou traço.");
+    end
+
+    disp("===== MATRIZ B =====");
+    if nB == mB then
+        disp("Determinante de B: " + string(det(B)));
+        disp("Traço de B: " + string(trace(B)));
+        if det(B) <> 0 then
+            disp("Inversa de B:");
+            disp(inv(B));
+        else
+            disp("A matriz B não é invertível (det = 0).");
+        end
+    else
+        disp("B não é quadrada → sem determinante, inversa ou traço.");
+    end
+
+case 8 then
+    disp("Matriz A:");
+    disp(A);
+    disp("Matriz B:");
+    disp(B);
+
+case 9 then
+    disp("Encerrando o programa...");
+
+else
+    disp("Opção inválida. Tente novamente.");
+end
+
+end
+
+endfunction
+
+matriz_menu() </pre>
+
+</div>
+</body>
+</html>
